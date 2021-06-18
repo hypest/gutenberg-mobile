@@ -1,10 +1,8 @@
 tasks:
   - init: npm ci
-    command: |
-      export BUNDLE_REQUEST_URL="$(gp url 8081)/index.bundle?dev=true&minify=false"
-      { gp await-port 8081 && sleep 5 && gp preview $BUNDLE_REQUEST_URL?platform=android & }
-      { gp await-port 8081 && sleep 5 && gp preview $BUNDLE_REQUEST_URL?platform=ios & }
-      npm run start:reset
+    command: npm run start:reset
+  - command: gp await-port 8081 && sleep 5 && gp preview $(gp url 8081)/index.bundle?dev=true&minify=false&platform=android &
+  - command: gp await-port 8081 && sleep 5 && gp preview $(gp url 8081)/index.bundle?dev=true&minify=false&platform=ios &
 ports:
   - port: 8081
     onOpen: ignore
