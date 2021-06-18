@@ -1,3 +1,7 @@
 tasks:
   - init: npm ci
     command: npm run start:reset
+ports:
+  - port: 8081
+    onOpen: notify
+
