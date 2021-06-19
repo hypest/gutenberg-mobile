@@ -12,6 +12,7 @@ ARG platform_version="28"
 
 # Install custom tools, runtime, etc.
 RUN sudo apt update \
+    && sudo apt install -y qrencode \
     && sudo apt install -y android-sdk \
     && wget https://dl.google.com/android/repository/$cmd_line_tools_zip_name \
     && unzip $cmd_line_tools_zip_name \
