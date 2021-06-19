@@ -5,6 +5,7 @@ tasks:
     command: npm run start:reset
   - name: Serve APK
     command: gp await-port 8081 && woof -p 8000 -c 10000 gutenberg/packages/react-native-editor/android/app/build/outputs/apk/debug/app-debug.apk
+    openMode: split-right
   - name: Trigger JS bundling
     command: gp await-port 8081 && sleep 5 && curl -s -I $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=android" 2>&1 > /dev/null && curl -s -I $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=ios" 2>&1 > /dev/null && qrencode $(gp url 8000) -t ANSIUTF8 -o -
     openMode: split-right
