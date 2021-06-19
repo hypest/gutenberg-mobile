@@ -1,7 +1,7 @@
 image:
   file: .gitpod.Dockerfile
 tasks:
-  - init: npm ci
+  - init: npm ci && (cd gutenberg/packages/react-native-editor/android/; ./gradlew assembleDebug)
     command: npm run start:reset
   - command: gp await-port 8081 && sleep 5 && gp preview $(gp url 8081)/index.bundle?dev=true&minify=false&platform=android
   - command: gp await-port 8081 && sleep 5 && gp preview $(gp url 8081)/index.bundle?dev=true&minify=false&platform=ios
