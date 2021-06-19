@@ -9,6 +9,8 @@ tasks:
     command: gp await-port 8081 && sleep 5 && curl -s -I $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=android" 2>&1 > /dev/null && curl -s -I $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=ios" 2>&1 > /dev/null && qrencode $(gp url 8000) -t ANSIUTF8 -o -
     openMode: split-right
 ports:
+  - port: 8000
+    onOpen: ignore
   - port: 8081
     onOpen: ignore
 
