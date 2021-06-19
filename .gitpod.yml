@@ -1,7 +1,7 @@
 image:
   file: .gitpod.Dockerfile
 tasks:
-  - init: npm ci && (cd gutenberg/packages/react-native-editor/android/; ./gradlew assembleDebug)
+  - init: npm ci && (export METRO_DEBUG_URL=`echo $(gp url 8081):80 | sed -E 's/^\s*.*:\/\///g'` && cd gutenberg/packages/react-native-editor/android/; ./gradlew assembleDebug)
     command: npm run start:reset
   - name: Serve APK
     command: gp await-port 8081 && qrencode $(gp url 8000) -t ANSIUTF8 -o - && woof -p 8000 -c 10000 gutenberg/packages/react-native-editor/android/app/build/outputs/apk/debug/app-debug.apk
