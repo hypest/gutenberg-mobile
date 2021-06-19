@@ -3,11 +3,8 @@ image:
 tasks:
   - init: npm ci && (cd gutenberg/packages/react-native-editor/android/; ./gradlew assembleDebug)
     command: npm run start:reset
-  - name: Trigger Android JS bundling
-    command: gp await-port 8081 && sleep 5 && gp preview $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=android"
-    openMode: split-right
-  - name: Trigger iOS JS bundling
-    command: gp await-port 8081 && sleep 5 && gp preview $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=ios"
+  - name: Trigger JS bundling
+    command: gp await-port 8081 && sleep 5 && gp preview $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=android" && gp preview $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=ios"
     openMode: split-right
 ports:
   - port: 8081
