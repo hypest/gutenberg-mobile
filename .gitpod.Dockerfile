@@ -15,7 +15,7 @@ RUN sudo apt update \
     && sudo apt install -y qrencode \
     && wget http://www.home.unix-ag.org/simon/woof && chmod +x woof && sudo mv woof /usr/local/bin/ \
     && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.38.0/install.sh | bash \
-    && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    && export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \
     && sudo apt install -y android-sdk \
     && wget https://dl.google.com/android/repository/$cmd_line_tools_zip_name \
     && unzip $cmd_line_tools_zip_name \
