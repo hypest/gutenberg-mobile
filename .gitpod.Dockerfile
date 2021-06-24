@@ -14,6 +14,7 @@ ARG platform_version="28"
 RUN sudo apt update \
     && sudo apt install -y qrencode \
     && wget http://www.home.unix-ag.org/simon/woof && chmod +x woof && sudo mv woof /usr/local/bin/ \
+    && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.38.0/install.sh | bash \
     && sudo apt install -y android-sdk \
     && wget https://dl.google.com/android/repository/$cmd_line_tools_zip_name \
     && unzip $cmd_line_tools_zip_name \
