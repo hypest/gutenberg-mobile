@@ -12,3 +12,8 @@ ports:
   - port: 8081
     onOpen: ignore
 
+vscode:
+  extensions:
+    - https://github.com/microsoft/vscode-react-native/releases/download/1.5.1/vscode-react-native-1.5.1.vsix
+
+
