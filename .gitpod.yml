@@ -13,15 +13,6 @@ tasks:
         cd gutenberg/packages/react-native-editor/android/
         ; ./gradlew assembleDebug
       )
-      && ((
-        gp await-port 8081 2>&1 > /dev/null
-        ; sleep 5
-        ; curl -s -I $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=android" 2>&1 > /dev/null
-        ; curl -s -I $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=ios" 2>&1 > /dev/null
-        ; sleep 5
-        ; pkill -f "react-native start"
-      ) &) 
-      && npm run start:quick
       command: >
       (
         gp await-port 8081 2>&1 > /dev/null
