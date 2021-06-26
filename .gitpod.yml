@@ -9,26 +9,18 @@ tasks:
       && npm run bundle:android
       && mkdir -p gutenberg/packages/react-native-bridge/android/react-native-bridge/build/assets
       && cp bundle/android/App.js gutenberg/packages/react-native-bridge/android/react-native-bridge/build/assets/index.android.bundle
-      && (
-        cd gutenberg/packages/react-native-editor/android/
-        ; ./gradlew assembleDebug
-      )
-      command: >
-      (
-        gp await-port 8081 2>&1 > /dev/null
-        ; sleep 5
-        ; curl -s -I $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=android" 2>&1 > /dev/null
-        ; curl -s -I $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=ios" 2>&1 > /dev/null
+      && (cd gutenberg/packages/react-native-editor/android/; ./gradlew assembleDebug)
+    command: >
+      (gp await-port 8081 2>&1 > /dev/null
+      ; sleep 5
+      ; curl -s -I $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=android" 2>&1 > /dev/null
+      ; curl -s -I $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=ios" 2>&1 > /dev/null
       ) &
       npm run start:quick
 
   - name: Build and serve APK
     command: >
-      (
-        export METRO_DEBUG_URL=`echo $(gp url 8081):80 | sed -E 's/^\s*.*:\/\///g'` 
-        && cd gutenberg/packages/react-native-editor/android/
-        ; ./gradlew assembleDebug
-      ) 
+      (export METRO_DEBUG_URL=`echo $(gp url 8081):80 | sed -E 's/^\s*.*:\/\///g'` && cd gutenberg/packages/react-native-editor/android/; ./gradlew assembleDebug) 
       && gp await-port 8081 
       && qrencode $(gp url 8000) -t ANSIUTF8 -o - 
       && woof -p 8000 -c 10000 gutenberg/packages/react-native-editor/android/app/build/outputs/apk/debug/app-debug.apk
