@@ -26,6 +26,16 @@ tasks:
       && woof -p 8000 -c 10000 gutenberg/packages/react-native-editor/android/app/build/outputs/apk/debug/app-debug.apk
     openMode: split-right
 
+  - name: tailscaled
+    command: |
+      sudo tailscaled
+  - name: tailscale
+    command: |
+      sudo -E tailscale up --hostname "gitpod-${GITPOD_WORKSPACE_ID}" \
+                           --authkey "${TAILSCALE_AUTHKEY}"
+
+experimentalNetwork: true
+
 ports:
   - port: 8000
     onOpen: ignore

@@ -22,6 +22,10 @@ RUN sudo apt update \
     && yes | sudo $sdkmanager_bin --install "build-tools;$build_tools_version" \
     && yes | sudo $sdkmanager_bin --install "platforms;android-$platform_version" \
     && yes | sudo $sdkmanager_bin --install "platforms;android-29" \
-    && yes | sudo $sdkmanager_bin --licenses
+    && yes | sudo $sdkmanager_bin --licenses \
+    && curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add - \
+    && curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list \
+    && sudo apt update \
+    && sudo apt install -y tailscale
 
 ENV PATH=$PATH:$cmdline_tools_location/bin/
