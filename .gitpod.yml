@@ -3,7 +3,9 @@ image:
 
 tasks:
   - init: >
-      npm ci
+      nvm install v14
+      && nvm use v14
+      && npm ci
       && npm run clean
       && npm run core prebundle
       && npm run bundle:android
