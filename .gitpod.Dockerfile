@@ -7,8 +7,8 @@ ARG cmd_line_tools_zip_name="commandlinetools-linux-"$cmd_line_tools_version"_la
 ARG cmdline_tools_root=$ANDROID_SDK_ROOT/cmdline-tools
 ARG cmdline_tools_location=$cmdline_tools_root/latest
 ARG sdkmanager_bin=$cmdline_tools_location/bin/sdkmanager
-ARG build_tools_version="29.0.2"
-ARG platform_version="28"
+ARG build_tools_version="30.0.2"
+ARG platform_version="30"
 
 # Install custom tools, runtime, etc.
 RUN sudo apt update \
