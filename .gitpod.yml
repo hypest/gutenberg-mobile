@@ -22,10 +22,10 @@ tasks:
 
   - name: Build and serve APK
     command: >
-      (export METRO_DEBUG_URL=`echo $(gp url 8081):80 | sed -E 's/^\s*.*:\/\///g'` && cd gutenberg/packages/react-native-editor/android/; export METRO_DEBUG_DOMAIN=`echo $(gp url 8081) | sed -E 's/^\s*.*:\/\///g'` && cat ./app/src/debug/res/xml/react_native_config.xml | sed -E 's/<\/domain-config>/  <domain includeSubdomains="false">'$METRO_DEBUG_DOMAIN'<\/domain>\n    <domain includeSubdomains="false">'`tailscale ip -4`'<\/domain>\n  <\/domain-config>/' > ./app/src/debug/res/xml/gitpod_network_security_config.xml && sed -iE 's/react_native_config/gitpod_network_security_config/' ./app/src/debug/AndroidManifest.xml && ./gradlew assembleDebug)
+      (export METRO_DEBUG_URL=`tailscale ip -4`:8081 && cd gutenberg/packages/react-native-editor/android/; cat ./app/src/debug/res/xml/react_native_config.xml | sed -E 's/<\/domain-config>/  <domain includeSubdomains="false">'`tailscale ip -4`'<\/domain>\n  <\/domain-config>/' > ./app/src/debug/res/xml/gitpod_network_security_config.xml && sed -iE 's/react_native_config/gitpod_network_security_config/' ./app/src/debug/AndroidManifest.xml && ./gradlew assembleDebug)
       && gp await-port 8081 
-      && qrencode $(gp url 8000) -t ANSIUTF8 -o - 
-      && woof -p 8000 -c 10000 gutenberg/packages/react-native-editor/android/app/build/outputs/apk/debug/app-debug.apk
+      && qrencode "http://"`tailscale ip -4`:8000 -t ANSIUTF8 -o - 
+      && woof -i `tailscale ip -4` -p 8000 -c 10000 gutenberg/packages/react-native-editor/android/app/build/outputs/apk/debug/app-debug.apk
     openMode: split-right
 
   - name: tailscaled
@@ -45,7 +45,7 @@ ports:
 
   - port: 8081
     onOpen: ignore
-    visibility: public
+    visibility: private
 
 vscode:
   extensions:
