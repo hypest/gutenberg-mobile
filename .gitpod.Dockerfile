@@ -21,6 +21,8 @@ RUN sudo apt update \
     && sudo mv ./cmdline-tools $cmdline_tools_location \
     && yes | sudo $sdkmanager_bin --install "build-tools;$build_tools_version" \
     && yes | sudo $sdkmanager_bin --install "platforms;android-$platform_version" \
+    && yes | sudo $sdkmanager_bin --uninstall "platform-tools" \
+    && yes | sudo $sdkmanager_bin --install "platform-tools" \
     && yes | sudo $sdkmanager_bin --licenses \
     && curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add - \
     && curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list \
