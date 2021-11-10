@@ -1,0 +1,55 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: >
+      nvm install v14
+      && nvm use v14
+      && npm ci
+      && npm run clean
+      && npm run core prebundle
+      && npm run bundle:android
+      && mkdir -p gutenberg/packages/react-native-bridge/android/react-native-bridge/build/assets
+      && cp bundle/android/App.js gutenberg/packages/react-native-bridge/android/react-native-bridge/build/assets/index.android.bundle
+      && (cd gutenberg/packages/react-native-editor/android/; ./gradlew assembleDebug)
+    command: >
+      (gp await-port 8081 2>&1 > /dev/null
+      ; sleep 5
+      ; curl -s -I $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=android" 2>&1 > /dev/null
+      ; curl -s -I $(gp url 8081)"/index.bundle?dev=true&minify=false&platform=ios" 2>&1 > /dev/null
+      ) &
+      npm run start:quick
+
+  - name: Build and serve APK
+    command: >
+      (i=1;sp="◐◓◑◒";until tailscale ip -4 2>/dev/null; do printf "Waiting for tailscale to come up... ${sp:i++%${#sp}:1}"\\r;sleep .1;done)
+      && (export METRO_DEBUG_URL=`tailscale ip -4`:8081 && cd gutenberg/packages/react-native-editor/android/; cat ./app/src/debug/res/xml/react_native_config.xml | sed -E 's/<\/domain-config>/  <domain includeSubdomains="false">'`tailscale ip -4`'<\/domain>\n  <\/domain-config>/' > ./app/src/debug/res/xml/gitpod_network_security_config.xml && sed -iE 's/react_native_config/gitpod_network_security_config/' ./app/src/debug/AndroidManifest.xml && ./gradlew assembleDebug)
+      && gp await-port 8081 
+      && qrencode "http://"`tailscale ip -4`:8000 -t ANSIUTF8 -o - 
+      && woof -i `tailscale ip -4` -p 8000 -c 10000 gutenberg/packages/react-native-editor/android/app/build/outputs/apk/debug/app-debug.apk
+    openMode: split-right
+
+  - name: tailscaled
+    command: |
+      sudo tailscaled
+  - name: tailscale
+    command: |
+      sudo -E tailscale up --hostname "gitpod-${GITPOD_WORKSPACE_ID}" \
+                           --authkey "${TAILSCALE_AUTHKEY}"
+
+experimentalNetwork: true
+
+ports:
+  - port: 8000
+    onOpen: ignore
+    visibility: public
+
+  - port: 8081
+    onOpen: ignore
+    visibility: private
+
+vscode:
+  extensions:
+    - https://github.com/microsoft/vscode-react-native/releases/download/1.5.1/vscode-react-native-1.5.1.vsix
+
+

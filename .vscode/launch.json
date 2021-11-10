@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "Attach to packager",
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/gutenberg",
             "type": "reactnative",
             "request": "attach"
         },
