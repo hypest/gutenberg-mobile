@@ -30,7 +30,7 @@ RUN sudo apt update \
     && yes | sudo $sdkmanager_bin --licenses \
     && wget https://dl.google.com/android/repository/$ndk_zip_name \
     && unzip $ndk_zip_name \
-    && sudo mv ./ndk_unzipped_foldername $ndk_root \
+    && sudo mv ./$ndk_unzipped_foldername $ndk_root \
     && curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add - \
     && curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list \
     && sudo apt update \
