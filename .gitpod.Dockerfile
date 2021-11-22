@@ -9,6 +9,12 @@ ARG cmdline_tools_location=$cmdline_tools_root/latest
 ARG sdkmanager_bin=$cmdline_tools_location/bin/sdkmanager
 ARG build_tools_version="30.0.2"
 ARG platform_version="30"
+ARG ndk_version="r23b"
+ARG ndk_zip_name="android-ndk-"$ndk_version"-linux.zip"
+ARG ndk_root=$ANDROID_SDK_ROOT/../android-ndk
+ARG ndk_unzipped_foldername="android-ndk-"$ndk_version
+ARG cmake_version="3.18.1"
+ARG cmake_path=$ANDROID_SDK_ROOT"/cmake/"$cmake_version"/bin"
 
 # Install custom tools, runtime, etc.
 RUN sudo apt update \
@@ -24,9 +30,15 @@ RUN sudo apt update \
     && yes | sudo $sdkmanager_bin --uninstall "platform-tools" \
     && yes | sudo $sdkmanager_bin --install "platform-tools" \
     && yes | sudo $sdkmanager_bin --licenses \
+    && wget https://dl.google.com/android/repository/$ndk_zip_name \
+    && unzip $ndk_zip_name \
+    && sudo mv ./$ndk_unzipped_foldername $ndk_root \
+    && yes | sudo $sdkmanager_bin --install "cmake;$cmake_version" \
+    && sudo /home/linuxbrew/.linuxbrew/bin/brew uninstall cmake \
     && curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add - \
     && curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list \
     && sudo apt update \
     && sudo apt install -y tailscale
 
-ENV PATH=$PATH:$cmdline_tools_location/bin/
+ENV PATH=$PATH:$cmdline_tools_location/bin/:$ndk_root:$cmake_path
+ENV NDK_HOME=$ndk_root
