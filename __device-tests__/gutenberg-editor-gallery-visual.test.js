@@ -11,8 +11,15 @@ describe( 'Gutenberg Editor Visual test for Gallery Block', () => {
 		await editorPage.addNewBlock( blockNames.gallery );
 		await editorPage.closeMediaPicker();
 
-		// Visual test check
-		const screenshot = await takeScreenshot();
+		// Wait for the bottom sheet to hide
+		await editorPage.driver.pause( 3000 );
+
+		const block = await editorPage.getBlockAtPosition( blockNames.gallery );
+
+		const screenshot = await takeScreenshotByElement( block, {
+			padding: 7,
+		} );
+
 		expect( screenshot ).toMatchImageSnapshot();
 	} );
 
