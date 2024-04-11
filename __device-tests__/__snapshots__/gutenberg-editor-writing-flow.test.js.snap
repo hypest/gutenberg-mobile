@@ -5,7 +5,7 @@ exports[`Gutenberg Editor Writing Flow should format pasted HTML 2`] = `
 <h2 class="wp-block-heading">How We Work</h2>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":3} -->
+<!-- wp:heading {"level":3,"className":"wp-block-heading"} -->
 <h3 class="wp-block-heading" id="jobs">Jobs&nbsp;</h3>
 <!-- /wp:heading -->
 
@@ -13,7 +13,7 @@ exports[`Gutenberg Editor Writing Flow should format pasted HTML 2`] = `
 <p>We are always open to hearing from technical and non-technical talent in countries worldwide. If you are interested in working at Automattic,<a href="https://automattic.com/work-with-us/">check out our interest forms.</a></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3} -->
+<!-- wp:heading {"level":3,"className":"wp-block-heading"} -->
 <h3 class="wp-block-heading" id="how-we-work">How We Work</h3>
 <!-- /wp:heading -->
 
@@ -21,7 +21,7 @@ exports[`Gutenberg Editor Writing Flow should format pasted HTML 2`] = `
 <p>This isn’t your typical work-from-home job. Learn more about our culture, our creed, and life as an Automattician.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3} -->
+<!-- wp:heading {"level":3,"className":"wp-block-heading"} -->
 <h3 class="wp-block-heading" id="benefits">Benefits</h3>
 <!-- /wp:heading -->
 
@@ -37,11 +37,11 @@ exports[`Gutenberg Editor Writing Flow should format pasted HTML 2`] = `
 <figure class="wp-block-image"><img src="https://automattic.files.wordpress.com/2020/03/the-automattic-team.jpg?w=1024" alt="" class="wp-image-234274"/></figure>
 <!-- /wp:image -->
 
-<!-- wp:paragraph -->
-<p><em>Automattic Grand meetup, 2019. We can’t wait to do it again, once it’s safe to travel and congregate.</em></p>
+<!-- wp:paragraph {"className":"has-text-align-center has-small-font-size"} -->
+<p class="has-text-align-center has-small-font-size"><em>Automattic Grand meetup, 2019. We can’t wait to do it again, once it’s safe to travel and congregate.</em></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3} -->
+<!-- wp:heading {"level":3,"className":"wp-block-heading"} -->
 <h3 class="wp-block-heading" id="choose-your-own-adventure">Choose your own adventure</h3>
 <!-- /wp:heading -->
 
@@ -49,7 +49,7 @@ exports[`Gutenberg Editor Writing Flow should format pasted HTML 2`] = `
 <p>This isn’t your typical work from home job. Everyone works from the location they choose. We’re spread out all over the world in 93 countries. We track about 70 percent of our projects on&nbsp;<a href="http://p2theme.com/">P2-themed</a>&nbsp;WordPress.com blogs, 25 percent in private chat rooms, and the rest on Slack. Because of the geographic variance, we’re active 24/7. We care about the work you produce, not just the hours you put&nbsp;in.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3} -->
+<!-- wp:heading {"level":3,"className":"wp-block-heading"} -->
 <h3 class="wp-block-heading" id="coming-on-board">Coming on board</h3>
 <!-- /wp:heading -->
 
@@ -57,7 +57,7 @@ exports[`Gutenberg Editor Writing Flow should format pasted HTML 2`] = `
 <p>When you make it past the interview stage&nbsp;<a href="https://automattic.com/what-to-expect-during-a-trial/">we’ll do a project together on contract</a>, typically lasting between two to six weeks depending on how much time you can spend, to see how we work together (learn more about our&nbsp;<a rel="noreferrer noopener" href="https://automattic.com/global-hiring-guidelines/" target="_blank">global hiring guidelines</a>). When you join full-time, you’ll do customer support for WordPress.com for your first two weeks and spend a week in support annually, for evermore, regardless of your position. We believe an early and ongoing connection with the people who use our products is irreplaceable. (If you’re applying for an engineering position, you can&nbsp;<a href="https://automattic.com/work-with-us/how-we-hire-developers/">learn more about the process you can expect</a>.)</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3} -->
+<!-- wp:heading {"level":3,"className":"wp-block-heading"} -->
 <h3 class="wp-block-heading" id="meeting-up">Meeting up</h3>
 <!-- /wp:heading -->
 
@@ -73,13 +73,13 @@ exports[`Gutenberg Editor Writing Flow should format pasted HTML 2`] = `
 <p>As a distributed company, we also know how to connect with each other from afar, and consider&nbsp;<a rel="noreferrer noopener" href="https://automattic.com/social-communication/" target="_blank">day-to-day social communication</a>&nbsp;at least as important as breaking bread in person.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:quote -->
-<blockquote class="wp-block-quote"><!-- wp:paragraph -->
+<!-- wp:quote {"className":"wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"} -->
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow"><!-- wp:paragraph -->
 <p><em><strong>REGARDING COVID-19 AND TRAVEL:</strong>Automattic monitors government and health agency reports closely, and responds however possible to prioritize safety and well-being for our team members and communities. Currently all company travel is optional and at the individual’s choice.</em></p>
 <!-- /wp:paragraph --></blockquote>
 <!-- /wp:quote -->
 
-<!-- wp:heading {"level":3} -->
+<!-- wp:heading {"level":3,"className":"wp-block-heading"} -->
 <h3 class="wp-block-heading" id="diversity-equity-and-inclusion">Diversity, Equity, and Inclusion</h3>
 <!-- /wp:heading -->
 
@@ -87,7 +87,7 @@ exports[`Gutenberg Editor Writing Flow should format pasted HTML 2`] = `
 <p>In 2014 we started to work, as a company, on facilitating spaces for discussions about diversity at Automattic. And at the 2016 Grand Meetup with all of our employees across 50 countries, we decided to share with the rest of the world&nbsp;<a href="https://automattic.com/diversity-and-inclusion/">what we are doing about diversity, equity, and inclusion</a>.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3} -->
+<!-- wp:heading {"level":3,"className":"wp-block-heading"} -->
 <h3 class="wp-block-heading" id="what-do-we-look-for">What do we look for?</h3>
 <!-- /wp:heading -->
 
@@ -95,7 +95,7 @@ exports[`Gutenberg Editor Writing Flow should format pasted HTML 2`] = `
 <p>Automatticians are curious, driven, compassionate, tenacious, autonomous, friendly, independent, collaborative, communicative, supportive, self-motivated, and amazing with GIFs. We strive to live up to&nbsp;<a href="https://automattic.com/creed/">the Automattic Creed</a>&nbsp;and we want to work with people who will do the same. Are you interested in making the web and the world a better place? Apply today.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3} -->
+<!-- wp:heading {"level":3,"className":"wp-block-heading"} -->
 <h3 class="wp-block-heading" id="getting-to-know-us">Getting to know us</h3>
 <!-- /wp:heading -->
 
@@ -103,7 +103,7 @@ exports[`Gutenberg Editor Writing Flow should format pasted HTML 2`] = `
 <p>Would you like to know more about what it’s like to be part of Automattic? Check out&nbsp;<a href="https://distributed.blog/">Distributed</a>, our podcast and blog of interviews and resources for remote work, or this&nbsp;<a href="https://www.businessinsider.com/this-ceo-runs-a-billion-dollar-company-with-no-offices-or-email-2016-3">Business Insider interview</a>&nbsp;with Matt on how our company runs without offices or email.&nbsp;<a href="https://www.youtube.com/playlist?list=PLQFhxUeNFfdJqXqfkh8AZAaWhHJROinzk">Meet a few colleagues (aka Automatticians)</a>&nbsp;and hear about their experiences in their own words. Get a glimpse into&nbsp;<a href="https://jerryjones.dev/2020/04/16/getting-hired-at-automattic/">the hiring process</a>&nbsp;from Jerry, and learn from Beau about&nbsp;<a href="https://beau.blog/2020/03/remote-work-at-scale/">our tools, processes, and ways we communicate</a>. Still on the fence? Karen says you should really&nbsp;<a href="https://karen.blog/2016/02/07/my-fourth-anniversary-at-automattic/">just apply.</a></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3} -->
+<!-- wp:heading {"level":3,"className":"wp-block-heading"} -->
 <h3 class="wp-block-heading" id="our-development-process-data-informed-user-driven">Our development process: data-informed, user-driven</h3>
 <!-- /wp:heading -->
 
@@ -115,7 +115,7 @@ exports[`Gutenberg Editor Writing Flow should format pasted HTML 2`] = `
 <p>We have a one-button deploy system for WordPress.com, and we push code to the site 60–80 times a day. WordPress.com is synced with the WordPress.org trunk pretty much every weekday.&nbsp;<strong>We’re strong believers in&nbsp;<a href="http://opensource.org/">Open Source</a></strong>, and we try to open source everything we can.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":3} -->
+<!-- wp:heading {"level":3,"className":"wp-block-heading"} -->
 <h3 class="wp-block-heading" id="interested-come-work-with-us">Interested?<a href="https://automattic.com/work-with-us/">Come work with us</a>!</h3>
 <!-- /wp:heading -->"
 `;

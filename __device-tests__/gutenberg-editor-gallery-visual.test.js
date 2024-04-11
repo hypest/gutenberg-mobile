@@ -11,8 +11,15 @@ describe( 'Gutenberg Editor Visual test for Gallery Block', () => {
 		await editorPage.addNewBlock( blockNames.gallery );
 		await editorPage.closeMediaPicker();
 
-		// Visual test check
-		const screenshot = await takeScreenshot();
+		// Wait for the bottom sheet to hide
+		await editorPage.driver.pause( 3000 );
+
+		const block = await editorPage.getBlockAtPosition( blockNames.gallery );
+
+		const screenshot = await takeScreenshotByElement( block, {
+			padding: 7,
+		} );
+
 		expect( screenshot ).toMatchImageSnapshot();
 	} );
 
@@ -26,7 +33,7 @@ describe( 'Gutenberg Editor Visual test for Gallery Block', () => {
 		expect( galleryBlock ).toBeTruthy();
 
 		// Wait for images to load
-		await editorPage.driver.pause( 5000 );
+		await editorPage.driver.pause( 8000 );
 
 		// Visual test check
 		const screenshot = await takeScreenshot();
@@ -42,7 +49,7 @@ describe( 'Gutenberg Editor Visual test for Gallery Block', () => {
 		const block = await editorPage.selectBlock(
 			await editorPage.getBlockAtPosition( blockNames.gallery )
 		);
-		await editorPage.driver.pause( 5000 ); // Wait for images to load
+		await editorPage.driver.pause( 8000 ); // Wait for images to load
 
 		const screenshot = await takeScreenshotByElement( block, {
 			padding: 7,
