@@ -1,5 +1,6 @@
 Unreleased
 ---
+* [*] Analytics - Add support to register block insertions from the clipboard [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6801]
 
 1.116.0
 ---
