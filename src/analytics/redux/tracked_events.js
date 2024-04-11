@@ -9,6 +9,7 @@ const INSERTERS = {
 	HEADER_INSERTER: 'header-inserter',
 	SLASH_INSERTER: 'slash-inserter',
 	QUICK_INSERTER: 'quick-inserter',
+	CLIPBOARD: 'clipboard',
 };
 
 /**
@@ -33,6 +34,10 @@ const getBlockInserterUsed = ( originalBlockIds = [], metaData ) => {
 		inserterMethod === INSERTERS.QUICK_INSERTER
 	) {
 		return INSERTERS.QUICK_INSERTER;
+	}
+
+	if ( source === INSERTERS.CLIPBOARD ) {
+		return INSERTERS.CLIPBOARD;
 	}
 
 	// Inserting a block using a slash command is always a block replacement of
@@ -90,11 +95,15 @@ const trackBlockReplacement = (
 	const insert_method = getBlockInserterUsed( originalBlockIds, meta );
 
 	// To avoid tracking block insertions when replacing a block, we only track replacements
-	// when the slash inserter is used.
-	if ( insert_method === INSERTERS.SLASH_INSERTER ) {
+	// when the slash inserter is used or content was added from the clipboard.
+	if (
+		insert_method === INSERTERS.SLASH_INSERTER ||
+		insert_method === INSERTERS.CLIPBOARD
+	) {
 		trackBlocksHandler( blocks, 'editor_block_inserted', ( { name } ) => ( {
 			block_name: name,
 			insert_method,
+			blocks_replaced: true,
 		} ) );
 	}
 };
