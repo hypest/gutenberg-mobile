@@ -1,5 +1,6 @@
 Unreleased
 ---
+* [*] Enable FlatList Virtualization on iOS [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6716]
 
 1.117.0
 ---
