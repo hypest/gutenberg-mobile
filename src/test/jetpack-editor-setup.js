@@ -90,7 +90,10 @@ describe( 'Jetpack blocks', () => {
 
 	it( 'should register Jetpack blocks if Jetpack is active', () => {
 		setupJetpackEditor( defaultJetpackData );
-		const blocksAPI = registerJetpackBlocksIsolated( defaultProps );
+		registerJetpackBlocks( defaultProps );
+
+		const registeredBlocks = getBlockTypes().map( ( block ) => block.name );
+
 		expect( console ).toHaveLoggedWith(
 			'Block jetpack/contact-info registered.'
 		);
@@ -103,10 +106,6 @@ describe( 'Jetpack blocks', () => {
 		expect( console ).toHaveLoggedWith(
 			'Block videopress/video registered.'
 		);
-
-		const registeredBlocks = blocksAPI
-			.getBlockTypes()
-			.map( ( block ) => block.name );
 		expect( registeredBlocks ).toEqual(
 			expect.arrayContaining( jetpackBlocks )
 		);
@@ -124,7 +123,7 @@ describe( 'Jetpack blocks', () => {
 
 	it( 'should hide Jetpack blocks by capabilities', () => {
 		setupJetpackEditor( defaultJetpackData );
-		registerJetpackBlocksIsolated( {
+		registerJetpackBlocks( {
 			capabilities: {
 				contactInfoBlock: false,
 				paywallBlock: true,
@@ -132,19 +131,8 @@ describe( 'Jetpack blocks', () => {
 				videoPressBlock: true,
 			},
 		} );
-		expect( console ).toHaveLoggedWith(
-			'Block jetpack/contact-info registered.'
-		);
-		expect( console ).toHaveLoggedWith(
-			'Block jetpack/paywall registered.'
-		);
-		expect( console ).toHaveLoggedWith(
-			'Block jetpack/tiled-gallery registered.'
-		);
-		expect( console ).toHaveLoggedWith(
-			'Block videopress/video registered.'
-		);
 
+		const registeredBlocks = getBlockTypes().map( ( block ) => block.name );
 		const hiddenBlockTypes = select( preferencesStore ).get(
 			'core',
 			'hiddenBlockTypes'
@@ -153,6 +141,9 @@ describe( 'Jetpack blocks', () => {
 			'jetpack/paywall',
 			'jetpack/contact-info',
 		] );
+		expect( registeredBlocks ).toEqual(
+			expect.arrayContaining( jetpackBlocks )
+		);
 	} );
 
 	it( "should not register Jetpack blocks if 'onlyCoreBlocks' capbility is on", () => {
