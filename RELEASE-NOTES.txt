@@ -1,5 +1,8 @@
 Unreleased
 ---
+
+1.118.0
+---
 * [*] Enable FlatList Virtualization on iOS [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6716]
 * [*] Fix a crash when pasting file images and special comment markup [https://github.com/WordPress/gutenberg/pull/60676]
 
