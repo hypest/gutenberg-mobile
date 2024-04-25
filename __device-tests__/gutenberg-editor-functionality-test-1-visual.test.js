@@ -459,5 +459,55 @@ describe( 'Gutenberg Editor - Test Suite 1', () => {
 			screenshot = await takeScreenshotByElement( paragraphBlockElement );
 			expect( screenshot ).toMatchImageSnapshot();
 		} );
+
+		it( 'should set a shorthand hex highlight color', async () => {
+			await editorPage.initializeEditor( {
+				rawFeatures:
+					'{"color":{"background":true,"custom":true,"palette":{"theme":[{"color":"#6a8cd0","name":"Base","slug":"base"},{"color":"#000","name":"Tertiary","slug":"tertiary"}]},"text":true}}',
+				rawStyles:
+					'{"color":{"background":"var(--wp--preset--color--base)","text":"var(--wp--preset--color--tertiary)"}}',
+			} );
+
+			const defaultBlockAppenderElement =
+				await editorPage.getDefaultBlockAppenderElement();
+			await defaultBlockAppenderElement.click();
+			const toolbar = await editorPage.getToolbar();
+
+			await editorPage.toggleHighlightColor( 'Tertiary' );
+
+			await editorPage.typeKeyString( 'Hey ' );
+
+			screenshot = await takeScreenshotByElement(
+				await toolbar.$( '~Text color' ),
+				{ padding: -5 }
+			);
+			expect( screenshot ).toMatchImageSnapshot();
+
+			const paragraphBlockElement = await editorPage.getBlockAtPosition(
+				blockNames.paragraph
+			);
+
+			await editorPage.dismissKeyboard();
+			await editorPage.driver.waitUntil( async function () {
+				return ! ( await editorPage.driver.isKeyboardShown() );
+			} );
+
+			screenshot = await takeScreenshotByElement( paragraphBlockElement );
+			expect( screenshot ).toMatchImageSnapshot();
+		} );
+
+		it( 'should render a mark tag with shorthand hex highlight color', async () => {
+			await editorPage.initializeEditor( {
+				initialData: `<!-- wp:paragraph -->
+<p><mark style="background-color:rgba(0,0,0,0);color:#000" class="has-inline-color has-black-color">Hey</mark></p>
+<!-- /wp:paragraph -->`,
+			} );
+
+			const paragraphBlockElement = await editorPage.getBlockAtPosition(
+				blockNames.paragraph
+			);
+			screenshot = await takeScreenshotByElement( paragraphBlockElement );
+			expect( screenshot ).toMatchImageSnapshot();
+		} );
 	} );
 } );
