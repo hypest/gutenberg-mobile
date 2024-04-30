@@ -209,7 +209,9 @@ describe( "Update VideoPress block's settings", () => {
 	 */
 	RATING_OPTIONS.forEach( ( option, index ) => {
 		// Skip the default setting, as it is already selected
-		if ( index === 0 ) return;
+		if ( index === 0 ) {
+			return;
+		}
 
 		it( `should update Privacy and Rating section's rating setting to ${ option }`, async () => {
 			await selectAndOpenBlockSettings( screen );
@@ -229,7 +231,9 @@ describe( "Update VideoPress block's settings", () => {
 	 */
 	PRIVACY_OPTIONS.forEach( ( option, index ) => {
 		// Skip the default setting, as it is already selected
-		if ( index === 0 ) return;
+		if ( index === 0 ) {
+			return;
+		}
 
 		it( `should update Privacy and Rating section's privacy setting to ${ option }`, async () => {
 			await selectAndOpenBlockSettings( screen );
