@@ -13,7 +13,7 @@ command -v nvm >/dev/null 2>&1 || {
 pushd block-experiments
 
 # Set up node requirement for block-experiments
-nvm use
+nvm install
 
 # Check if Yarn is installed
 if ! command -v yarn &> /dev/null
