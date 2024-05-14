@@ -18,7 +18,13 @@ const gutenbergMetroConfigCopy = {
 		sourceExts: [ 'js', 'cjs', 'jsx', 'json', 'scss', 'sass', 'ts', 'tsx' ],
 		extraNodeModules,
 		// Exclude `ios-xcframework` folder to avoid conflicts with packages contained in Pods.
-		blockList: [ /ios-xcframework\/.*/ ],
+		blockList: [
+			/ios-xcframework\/.*/,
+			// Exclude all @wordpress packages in the "block-experiments" folder,
+			// this prevents issues with older versions of native files.
+			// We are importing Gutenberg directly so all packages are already available.
+			/block-experiments\/node_modules\/@wordpress\/.*/,
+		],
 	},
 };
 
