@@ -1,6 +1,14 @@
 #!/bin/bash
 set -Eeuo pipefail
 
+local_run_script="${GBM_LOCAL_BLOCK_EXPERIMENTS_RUN_SCRIPT:-./bin/run-block-experiments-command.sh.local}"
+
+if [ -e "$local_run_script" ]
+then
+  source "$local_run_script"
+  exit 0
+fi
+
 # Check if nvm is installed
 [ -z "$NVM_DIR" ] && NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
