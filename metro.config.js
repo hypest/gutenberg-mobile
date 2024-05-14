@@ -20,9 +20,10 @@ const gutenbergMetroConfigCopy = {
 		// Exclude `ios-xcframework` folder to avoid conflicts with packages contained in Pods.
 		blockList: [
 			/ios-xcframework\/.*/,
-			// Exclude all modules in the "block-experiments" folder except for "classnames",
-			// this prevents issues with older references if we allow all packages.
-			/block-experiments\/node_modules\/(?!classnames)/,
+			// Exclude all @wordpress packages in the "block-experiments" folder,
+			// this prevents issues with older versions of native files.
+			// We are importing Gutenberg directly so all packages are already available.
+			/block-experiments\/node_modules\/@wordpress\/.*/,
 		],
 	},
 };
