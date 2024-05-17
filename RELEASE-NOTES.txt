@@ -1,6 +1,7 @@
 Unreleased
 ---
 * [*] Cancel failed or in progress uploads if the media block is removed [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6841]
+* [internal] Upgrade target sdk version to Android API 34 [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6870]
 
 1.118.0
 ---
