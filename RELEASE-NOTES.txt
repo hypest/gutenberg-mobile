@@ -1,6 +1,7 @@
 Unreleased
 ---
 * [*] Prevent deleting content when backspacing in the first Paragraph block [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6894]
+* [internal] Adds new bridge functionality to set editor content [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6878]
 
 1.119.0
 ---
