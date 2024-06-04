@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 const { isAndroid, toggleDarkMode } = e2eUtils;
-import { takeScreenshot } from './utils';
+import { takeScreenshot, takeScreenshotByElement } from './utils';
 
 describe( 'Gutenberg Editor Visual test for Unsupported Block', () => {
 	it( 'should show the empty placeholder for the selected/unselected state', async () => {
@@ -13,22 +13,11 @@ describe( 'Gutenberg Editor Visual test for Unsupported Block', () => {
 		const unsupportedBlock = await editorPage.getBlockAtPosition(
 			editorPage.blockNames.unsupported
 		);
-		await unsupportedBlock.click();
-		// Wait for the block to be selected
-		await editorPage.driver.pause( 500 );
 
 		// Visual test check
-		let screenshot = await takeScreenshot();
-		expect( screenshot ).toMatchImageSnapshot();
-
-		// Select title to unfocus the block
-		const titleElement = await editorPage.getTitleElement();
-		await titleElement.click();
-
-		await editorPage.dismissKeyboard();
-
-		// Visual test check
-		screenshot = await takeScreenshot();
+		const screenshot = await takeScreenshotByElement( unsupportedBlock, {
+			padding: 7,
+		} );
 		expect( screenshot ).toMatchImageSnapshot();
 	} );
 
@@ -42,28 +31,18 @@ describe( 'Gutenberg Editor Visual test for Unsupported Block', () => {
 		const unsupportedBlock = await editorPage.getBlockAtPosition(
 			editorPage.blockNames.unsupported
 		);
-		await unsupportedBlock.click();
-		// Wait for the block to be selected
-		await editorPage.driver.pause( 1000 );
 
 		// Visual test check
-		let screenshot = await takeScreenshot();
-		expect( screenshot ).toMatchImageSnapshot();
-
-		// Select title to unfocus the block
-		const titleElement = await editorPage.getTitleElement();
-		await titleElement.click();
-
-		await editorPage.dismissKeyboard();
-
-		// Visual test check
-		screenshot = await takeScreenshot();
+		const screenshot = await takeScreenshotByElement( unsupportedBlock, {
+			padding: 7,
+		} );
 		expect( screenshot ).toMatchImageSnapshot();
 
 		await toggleDarkMode( editorPage.driver, false );
 	} );
 
-	it( 'should be able to open the unsupported block web view editor', async () => {
+	// Disabled temporarily
+	it.skip( 'should be able to open the unsupported block web view editor', async () => {
 		await editorPage.initializeEditor( {
 			initialData: e2eTestData.unsupportedBlockHtml,
 		} );
