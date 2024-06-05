@@ -3,6 +3,11 @@ Unreleased
 * [*] Prevent deleting content when backspacing in the first Paragraph block [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6894]
 * [internal] Adds new bridge functionality to set editor content [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6878]
 
+1.119.1
+---
+* [*] Image corrector - Check the path extension is a valid one [https://github.com/WordPress/gutenberg/pull/62190]
+* [*] Unsupported block - UI improvements [https://github.com/WordPress/gutenberg/pull/62240]
+
 1.119.0
 ---
 * [*] Cancel failed or in progress uploads if the media block is removed [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6841]
