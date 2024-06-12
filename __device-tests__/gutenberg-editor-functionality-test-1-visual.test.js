@@ -326,8 +326,7 @@ describe( 'Gutenberg Editor - Test Suite 1', () => {
 			expect( screenshot ).toMatchImageSnapshot();
 		} );
 
-		// Disabled until we fix the current regression with the inserter
-		it.skip( 'should display the block outline of a block inserted from the appender', async () => {
+		it( 'should display the block outline of a block inserted from the appender', async () => {
 			await editorPage.initializeEditor();
 
 			await editorPage.addNewBlock( blockNames.socialIcons );
