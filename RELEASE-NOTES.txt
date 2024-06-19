@@ -1,5 +1,8 @@
 Unreleased
 ---
+* [internal] Fix Inserter items list filtering [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6911]
+* [*] Prevent hiding the keyboard when creating new list items [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6922]
+* [*] Fix issue when pasting HTML content [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6933]
 
 1.120.1
 ---
@@ -9,6 +12,11 @@ Unreleased
 ---
 * [*] Prevent deleting content when backspacing in the first Paragraph block [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6894]
 * [internal] Adds new bridge functionality to set editor content [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6878]
+
+1.119.1
+---
+* [*] Image corrector - Check the path extension is a valid one [https://github.com/WordPress/gutenberg/pull/62190]
+* [*] Unsupported block - UI improvements [https://github.com/WordPress/gutenberg/pull/62240]
 
 1.119.0
 ---
