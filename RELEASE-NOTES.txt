@@ -2,8 +2,11 @@ Unreleased
 ---
 * [internal] Fix Inserter items list filtering [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6911]
 * [*] Prevent hiding the keyboard when creating new list items [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6922]
-* [*] RichText - Fix undefined onDelete callback [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6925]
 * [*] Fix issue when pasting HTML content [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6933]
+
+1.120.1
+---
+* [*] RichText - Fix undefined onDelete callback [https://github.com/wordpress-mobile/gutenberg-mobile/pull/6925]
 
 1.120.0
 ---
